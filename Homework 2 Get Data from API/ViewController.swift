@@ -40,10 +40,12 @@ class ViewController: UIViewController {
            let firstPhoto = photos.first
            
            print(result?.photos.first?.img_src)
-           print(firstPhoto?.img_src)
+           print(firstPhoto?.sol)
            print(firstPhoto?.camera.name)
-           print(firstPhoto?.rover.id)
-            print(firstPhoto?.id)
+           print(firstPhoto?.rover.status)
+           print(firstPhoto?.id)
+           print(firstPhoto?.earth_date)
+
         })
             task.resume()
         
@@ -56,15 +58,22 @@ struct Response: Codable {
 }
 struct MyPhoto: Codable  {
     let id: Int
+    let sol: Int
+    let earth_date: String
     let img_src: String
     let rover: Rover
     let camera: Camera
 }
 struct Rover: Codable {
     let id: Int
+    let name: String
+    let  landing_date:String
+    let launch_date: String
     let status: String
 }
 struct Camera: Codable {
     let full_name: String
     let name: String
+    let rover_id: Int
+    let id: Int
 }
